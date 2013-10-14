@@ -10,15 +10,15 @@
 #include <WebKit2/WKURL.h>
 #include <WebKit2/WKView.h>
 
+#define X11
+#ifdef X11
 #include  <X11/Xlib.h>
-#include  <X11/Xatom.h>
-#include  <X11/Xutil.h>
+#endif
 
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 #include <GLES2/gl2.h>
 
-#define X11
 struct state {
     uint32_t screen_width;
     uint32_t screen_height;

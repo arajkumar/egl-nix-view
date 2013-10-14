@@ -5,6 +5,9 @@ find_package(PkgConfig)
 pkg_check_modules(WebKitNix WebKitNix REQUIRED)
 pkg_check_modules(GLIB glib-2.0 REQUIRED)
 pkg_check_modules(CAIRO cairo REQUIRED)
+
+pkg_check_modules(EGL egl REQUIRED)
+pkg_check_modules(OPENGLES2 glesv2 REQUIRED)
 #pkg_check_modules(LIBPROFILER libprofiler)
 
 include_directories(Sample_INCLUDES
@@ -12,6 +15,8 @@ include_directories(Sample_INCLUDES
 #    /opt/vc/include/interface/vmcs_host
 #    /opt/vc/include/interface/vmcs_host/linux
 #    /opt/vc/include/interface/vcos/pthreads
+    ${OPENGLES2_INCLUDE_DIRS}
+    ${EGL_INCLUDE_DIRS}
     ${WebKitNix_INCLUDE_DIRS}
     ${GLIB_INCLUDE_DIRS}
     ${CAIRO_INCLUDE_DIRS}
@@ -22,7 +27,9 @@ link_directories(
     ${WebKitNix_LIBRARY_DIRS}
     ${GLIB_LIBRARY_DIRS}
     ${CAIRO_LIBRARY_DIRS}
-)
+    ${OPENGLES2_LIBRARY_DIRS}
+    ${EGL_LIBRARY_DIRS}
+ )
 
 add_definitions("-Wall")
 
